@@ -1,17 +1,3 @@
-"""
-Ingestão bronze: partidas do Campeonato Brasileiro Série A.
-
-Fonte: repositório público adaoduque/Brasileirao_Dataset (GitHub).
-Os arquivos são gravados SEM alteração no S3 (camada bronze), particionados
-por data de carga, junto com um manifesto de auditoria (hash, linhas, origem).
-
-Uso:
-    python ingestion/brasileirao_github.py            # envia para o S3
-    python ingestion/brasileirao_github.py --dry-run  # baixa e valida, sem enviar
-
-Requer a variável de ambiente DATA_LAKE_BUCKET.
-"""
-
 import argparse
 import hashlib
 import json

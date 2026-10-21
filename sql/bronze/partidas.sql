@@ -1,8 +1,3 @@
--- Tabela bronze de partidas: espelho fiel do CSV de origem (todas as colunas como texto).
--- Tipagem, renomeação e limpeza acontecem na camada silver.
--- Execute no Athena com o workgroup "flamengo-data-analytics" selecionado.
--- Substitua <SEU_BUCKET> pela saída "data_lake_bucket" do Terraform.
-
 CREATE EXTERNAL TABLE IF NOT EXISTS flamengo_bronze.partidas (
   id                  string,
   rodata              string,
