@@ -1,0 +1,25 @@
+name: flamengo
+version: "1.0.0"
+config-version: 2
+profile: flamengo
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+vars:
+  # Exceções conhecidas à regra de 380 partidas por temporada (20 clubes)
+  temporadas_excecao:
+    2016: 379  # partida da última rodada não realizada após a tragédia da Chapecoense
+
+models:
+  flamengo:
+    silver:
+      +schema: silver            # -> database flamengo_silver no Glue
+      +materialized: table
+      +format: parquet
+      +write_compression: snappy
+
+seeds:
+  flamengo:
+    +schema: silver

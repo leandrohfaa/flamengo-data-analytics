@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: flamengo_bronze
+    description: Dados brutos ingeridos sem alteração (camada bronze)
+    tables:
+      - name: partidas
+        description: Partidas da Série A desde 2003 (adaoduque/Brasileirao_Dataset)

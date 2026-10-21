@@ -1,0 +1,41 @@
+version: 2
+
+seeds:
+  - name: clubes
+    description: >
+      De-para de nomes da origem para um identificador único de clube (entity resolution).
+      Ex.: "Barueri" e "Gremio Prudente" são o mesmo clube, que mudou de cidade em 2010.
+    columns:
+      - name: nome_origem
+        data_tests: [unique, not_null]
+      - name: clube_id
+        data_tests: [not_null]
+
+models:
+  - name: partidas
+    description: Partidas da Série A tipadas, com temporada derivada e clubes padronizados.
+    columns:
+      - name: partida_id
+        description: ID da partida na origem
+        data_tests: [unique, not_null]
+      - name: temporada
+        description: Temporada esportiva (difere do ano civil em 2020/2021)
+        data_tests: [not_null]
+      - name: rodada
+        data_tests: [not_null]
+      - name: data_partida
+        data_tests: [not_null]
+      - name: mandante_id
+        description: Nulo indica clube sem mapeamento no seed clubes
+        data_tests: [not_null]
+      - name: visitante_id
+        data_tests: [not_null]
+      - name: gols_mandante
+        data_tests: [not_null]
+      - name: gols_visitante
+        data_tests: [not_null]
+      - name: resultado
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["M", "V", "E"]
