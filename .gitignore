@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Credenciais e variáveis de ambiente
+.env
+kaggle.json
+*.pem
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Dados locais (os dados ficam no S3)
+data/
