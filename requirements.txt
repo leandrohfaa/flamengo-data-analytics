@@ -1,2 +1,4 @@
 boto3>=1.35
 requests>=2.32
+dbt-core==1.12.5
+dbt-athena==1.11.1

@@ -79,7 +79,7 @@ resource "aws_athena_workgroup" "this" {
   force_destroy = true
 
   configuration {
-    enforce_workgroup_configuration = true
+    enforce_workgroup_configuration = false
     bytes_scanned_cutoff_per_query  = var.athena_scan_limit_bytes
 
     result_configuration {

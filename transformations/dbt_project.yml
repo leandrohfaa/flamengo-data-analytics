@@ -2,24 +2,29 @@ name: flamengo
 version: "1.0.0"
 config-version: 2
 profile: flamengo
-
+ 
 model-paths: ["models"]
 seed-paths: ["seeds"]
 test-paths: ["tests"]
-
+ 
 vars:
   # Exceções conhecidas à regra de 380 partidas por temporada (20 clubes)
   temporadas_excecao:
     2016: 379  # partida da última rodada não realizada após a tragédia da Chapecoense
-
+ 
+# Cada camada grava em seu próprio prefixo do data lake: s3://<bucket>/<camada>/<tabela>/
 models:
   flamengo:
     silver:
       +schema: silver            # -> database flamengo_silver no Glue
+      +s3_data_dir: "s3://{{ env_var('DATA_LAKE_BUCKET') }}/silver/"
+      +s3_data_naming: table
       +materialized: table
       +format: parquet
       +write_compression: snappy
-
+ 
 seeds:
   flamengo:
     +schema: silver
+    +s3_data_dir: "s3://{{ env_var('DATA_LAKE_BUCKET') }}/silver/"
+    +s3_data_naming: table
